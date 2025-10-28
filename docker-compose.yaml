@@ -1,5 +1,5 @@
 services:
   web:
-    build: .
+    image: ghcr.io/nrf24l01/silaeder-conf/nginx:latest
     ports:
       - "8080:80"
