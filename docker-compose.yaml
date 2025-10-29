@@ -2,4 +2,4 @@ services:
   web:
     image: ghcr.io/nrf24l01/silaeder-conf/nginx:latest
     ports:
-      - "8080:80"
+      - "${NGINX_BIND_IP}:6001:80"
