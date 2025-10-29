@@ -1,5 +1,17 @@
 services:
   web:
     image: ghcr.io/nrf24l01/silaeder-conf/nginx:latest
+    restart: unless-stopped
     ports:
       - "${NGINX_BIND_IP}:6001:80"
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: unless-stopped
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=300
+      - DOCKER_CONFIG=/
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.docker/config.json:/config.json
